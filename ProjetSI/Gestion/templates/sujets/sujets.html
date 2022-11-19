@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<a href="{% url 'creerSujet' entreprise.pk %}"> <button class="btn btn-primary"> Ajouter un sujet proposé par {{ entreprise.NomEnt }}</button></a>
+<h2> Sujets PFE proposés par l'entreprise {{ entreprise.NomEnt }}:</h2>
+<table class='table'>
+    <tr>
+        <th>Intitulé</th>
+        <th>Année</th>
+        <th>Actions</th>
+    </tr>
+    {% for sujet in sujets %}
+        <tr>
+
+            <td>{{sujet.IntituléS}}</td>
+            <td>{{sujet.Date.year}}</td>
+            <td><a href="{% url 'detailSujet' sujet.pk %}"> <button class="btn btn-primary"> Détails </button></a>
+            <a href="{% url 'modifierSujet' sujet.pk %}"> <button class="btn btn-primary"> Modifier </button></a>
+            <a href="{% url 'supprimerSujet' sujet.pk %}"> <button class="btn btn-secondary"> Supprimer </button></a></td>
+            
+            
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

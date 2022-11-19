@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <h4>Promoteur de chez {{ entreprise.NomEnt }}</h4>
+    {{ form.NumJury.label_tag }} {{ form.NumJury }}
+    {% if promoteur.NumJury != None %}
+    <a href="{% url 'supprimerJury' promoteur.NumJury.pk %}">Supprimer Jury</a>
+    {% endif %}
+    <a href="{% url 'ajouterJury' %}">Ajouter Jury</a>
+    {% for field in form %}
+    <div class="fieldWrapper">
+    {% if field.name != "NumEnt" and field.name != "NumJury" %}
+    {{ field.label_tag }} {{ field }}
+    {% endif %}
+    </div>
+    {% endfor %}
+    
+    
+    
+    <a href="{% url 'listePromoteurs' entreprise.pk %}">Annuler</a>
+    <input type="submit" name="Ajout">
+</form>
+
+{% endblock %}

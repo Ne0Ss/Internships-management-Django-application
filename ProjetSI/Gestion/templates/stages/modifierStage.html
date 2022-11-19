@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Stage {{stage}}: </p>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.Durée.label_tag }} {{ form.Durée }}  semaines 
+    {% for field in form %}
+    <div class="fieldWrapper">
+    {% if stage.Type.pk != 3 or stage.Sujet_pfe == None %}
+    {% if field.name != "Durée" and field.name != "Sujet_pfe" and field.name != "Rapport"%}
+    {{ field.label_tag }} {{ field }}
+    {% endif %}
+    {% else %}
+    {% if field.name != "Durée" and field.name != "Rapport" %}
+    {{ field.label_tag }} {{ field }}
+    {% endif %}
+    {% endif %}
+    </div>
+    {% endfor %}
+    <div class="fieldWrapper">
+    {% if stage.Rapport != None %}
+    {{ form.Rapport.label_tag }} {{ form.Rapport }}
+    <p style="color:red;">{{msgRapport}}</p>
+    {% endif %}
+    </div>
+    <input type="submit" name="Ajout">
+</form>
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% endfor %}
+{% endblock %}

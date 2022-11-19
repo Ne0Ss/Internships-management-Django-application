@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  <h1>Choisissez un sujet PFE parmis les sujets proposés par {{entreprise}}: </h1>
+  <table class='table'>
+    <tr>
+        <th>Intitulé</th>
+        <th>Année</th>
+        <th>Actions</th>
+    </tr>
+  {% for sujet in sujets %}
+    <tr>
+
+      <td>{{sujet.IntituléS}}</td>
+      <td>{{sujet.Date.year}}</td>
+      <td><form action="{% url 'selectionnerSujet' stage.pk %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="sujet" value="{{ sujet.pk }}">
+        <input type="submit" value="Choisir" class="btn btn-primary"></form></td>
+      
+      
+    </tr>
+  {% endfor %}
+
+{% endblock %}

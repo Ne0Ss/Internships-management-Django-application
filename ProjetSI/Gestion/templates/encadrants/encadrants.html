@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'etudiants/css/cartes.css' %}" rel="stylesheet" type="text/css" >
+
+<a href="{% url 'creerEncadrant' %}"> <button class="btn btn-primary"> Ajouter un encadrant </button></a>
+
+<h1 style="margin-left: 30px;padding-top: 2rem;"> Encadrants:</h1> <br>
+
+<div class="card-columns" style="column-count: auto;">
+    {% for encadrant in encadrants %}
+    <div class="card shadow" style="width: 18rem; max-width: 250px; max-height: 450px; margin-bottom: 20px; ">
+        <img src="{{encadrant.image.url}}" class="card-img-top" alt="" style="border-top-right-radius:1rem;border-top-left-radius:1rem;max-width: 250px; max-height: 250px; ">
+        <a class="image-link" href="{% url 'supprimerEncadrant' encadrant.pk %}">
+            <img class="delete" src="{% static 'etudiants/images/delete.png' %}" alt="">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{encadrant.NomE}} {{encadrant.PrénomE}}</h5>
+          <p class="card-text">{{encadrant.Domaine}} </p> 
+          <a href="{% url 'detailEncadrant' encadrant.pk %}" class="btn btn-primary">Détails</a>
+          <a href="{% url 'modifierEncadrant' encadrant.pk %}" class="btn btn-secondary">Modifier</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>Aucun encadrant enregistré</p>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

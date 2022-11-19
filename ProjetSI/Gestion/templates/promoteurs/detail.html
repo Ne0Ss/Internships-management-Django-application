@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  <h1>{{ promoteur.NomP}} {{promoteur.PrénomP }}</h1>
+
+  <p><strong>Profession:</strong> {{ promoteur.Profession }}</p>
+  <p><strong>Numéro de téléphone:</strong> {{ promoteur.NumeroP }}</p>
+  <p><strong>Adresse email:</strong> {{ promoteur.EmailP }}</p>
+  <p><strong>Entreprise:</strong> {{ promoteur.NumEnt }}</p>
+
+  <a href="{% url 'listePromoteurs' promoteur.NumEnt.pk %}">Retour</a>
+{% endblock %}

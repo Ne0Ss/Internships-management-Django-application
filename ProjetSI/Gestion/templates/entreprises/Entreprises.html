@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<a href="{% url 'creerEntreprise' %}"> <button class="btn btn-primary"> Ajouter une entreprise </button></a>
+    <table class='table'>
+        <tr>
+            <th>Nom</th>
+            <th>Social</th>
+            <th>Adresse</th>
+            <th>Voir</th>
+            <th>Actions</th>
+        </tr>
+        {% for entreprise in entreprises %}
+            <tr>
+
+                <td>{{entreprise.NomEnt}}</td>
+                <td>{{entreprise.RaisonSociale}}</td>
+                <td>{{entreprise.Adresse}}</td>
+                <td><a href="{% url 'listePromoteurs' entreprise.pk %}"> <button class="btn btn-primary"> Promoteurs </button></a>
+                <a href="{% url 'listeSujets' entreprise.pk %}"> <button class="btn btn-primary"> Sujets </button></a></td>
+                <td><a href="{% url 'modifierEntreprise' entreprise.pk %}"> <button class="btn btn-primary"> Modifier </button></a>
+                <a href="{% url 'supprimerEntreprise' entreprise.pk %}"> <button class="btn btn-secondary"> Supprimer </button></a></td>
+                
+                
+                
+            </tr>
+        {% endfor %}
+    
+    </table>
+{% endblock %}

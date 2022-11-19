@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'nous/àpropos.css' %}" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card p-0">
+                <div class="card-image"> <img src="{% static 'nous/images/akram.jpeg'%}" alt=""> </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                    <h4 class="pt-2">Akram Touati</h4>
+                    <h5>191931069333</h5>
+                    <ul class="social-icons d-flex justify-content-center">
+                        <li style="--i:1"> <a href="https://web.facebook.com/akram.eeight"> <i class="fa fa-facebook" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:2"> <a href="https://www.instagram.com/ak__ra__m__/"> <i class="fa fa-instagram" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:3"> <a href="https://www.linkedin.com/in/akram-touati-230754211"> <i class="fa fa-linkedin" style="font-size:24px"></i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card p-0">
+                <div class="card-image"> <img src="{% static 'nous/images/riad.jpg'%}" alt=""> </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                    <h4 class="pt-2">Riad Boussoura</h4>
+                    <h5>191931968659</h5>
+                    <ul class="social-icons d-flex justify-content-center">
+                        <li style="--i:1"> <a href="https://web.facebook.com/profile.php?id=100011389117670"> <i class="fa fa-facebook" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:2"> <a href="https://www.instagram.com/riadbsr/"> <i class="fa fa-instagram" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:3"> <a href="https://www.linkedin.com/in/riad-boussoura-2505a0218/"> <i class="fa fa-linkedin" style="font-size:24px"></i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card p-0">
+                <div class="card-image"> <img src="{% static 'nous/images/aymen.jpg'%}" alt=""> </div>
+                <div class="card-content d-flex flex-column align-items-center">
+                    <h4 class="pt-2">Aymen Moussa</h4>
+                    <h5>191931087795</h5>
+                    <ul class="social-icons d-flex justify-content-center">
+                        <li style="--i:1"> <a href="https://web.facebook.com/thissmyusername"> <i class="fa fa-facebook" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:2"> <a href="https://www.instagram.com/aymen_ms/"> <i class="fa fa-instagram" style="font-size:24px"></i> </a> </li>
+                        <li style="--i:3"> <a href="https://www.linkedin.com/in/aymen-moussa-350891200/"> <i class="fa fa-linkedin" style="font-size:24px"></i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

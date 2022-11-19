@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div style="margin=2rem;">
+<h1>Bienvenue dans notre application !</h1>
+<br>
+<h2>Afin d'ajouter un stage veuillez suivre les étapes suivantes: </h2>
+<br>
+<h3> Etape 1: Ajouter un organisme d'accueil</h3> 
+<p> - Se rendre dans la page <a href="{% url 'listeEntreprises' %}">Entreprises</a> et <a href="{% url 'creerEntreprise' %}">ajouter l'entreprise</a> qui va accuillir le ou les stagiaires et où le stage va se dérouler.</p>
+<p> - Entrer les éventuels promoteurs de l'entreprise en question, en créant un jury si l'enployé en est fait partie sinon laisser la case vide.</p>
+<p> - Entrer les sujets PFE que pourrai proposer l'organisme. </p>
+<br>
+<h3> Etape 2: Ajouter le ou les encadrants</h3>
+<p> - Se rendre dans la page <a href="{% url 'listeEncadrants' %}">Encadrants</a> via la barre de navigation ou le <a href="{% url 'accueil' %}">menu d'accueil</a> et ajouter le ou les potenciels <a href="{% url 'creerEncadrant' %}">encadrants</a> de l'école qui vont prendre en charge les stagiaires.</p>
+<p> - Vous pouvez aussi preciser le jury dont il fait membre ou en créer un si il n'y a pas encore d'instance jury de créée.</p>
+<br>
+<h3> Etape 3: Ajouter le ou les stagiaires</h3>
+<p> - Se rendre dans la page <a href="{% url 'listeEtudiants' %}">Stagiaires</a> et <a href="{% url 'creerEtudiant' %}">ajouter les étudiants</a> à enregistrer dans le stage.</p> 
+<p> - Les afilier à leur equipes respectives si elles sont déjà créées sinon en ajouter une.</p>
+<p> - Assigner chaque équipe à son stage respectifs.</p>
+<p> <strong>Note:</strong> tout les cas non désirés sont pris en compte par l'application afin d'assurer la bonne coherence de la base de données, par exemple, une équipe de 4 stagiaires ne peut pas être assignée à un stage de type stage ouvrier car ces stages n'acceptent que les monômes ou binômes. </p>
+<h3> Etape 4: Ajouter un stage</h3>
+<p> - Se rendre dans la page des <a href="{% url 'listeStages' %}">Stages</a> pour <a href="{% url 'creerStage' %}">ajouter le stage</a> en question.</p> 
+<p> - Vous aurai par la suite la possibilité d'entrer le rapport de stage, d'ajouter une fiche d'évaluation, et, si le stage est de type PFE, de choisir le sujet du stage parmis les sujets proposés par l'organisme d'accueil.</p> 
+<p> <strong>Note:</strong> tout les cas non désirés sont pris en compte par l'application afin d'assurer la bonne coherence de la base de données, par exemple, la durée d'un stage technique de courte durée doit etre comprise entre 6 et 8 semaines. </p>
+</div>
+{% endblock %}

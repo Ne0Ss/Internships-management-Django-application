@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Etes vous sur de vouloir supprimer le stage ?</p>
+<form action="{% url 'supprimerStage' stage.pk %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'listeStages' %}">Annuler</a>
+    <input type="submit" name="Confimer">
+</form>
+{% endblock %}

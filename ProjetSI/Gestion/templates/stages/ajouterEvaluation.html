@@ -1,0 +1,42 @@
+
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'etudiants/css/detail.css' %}" rel="stylesheet" type="text/css" >
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="card">
+              <h3>Fiche d'évaluation du stage "{{stage}}":</h3>
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="fieldWrapper">
+                                {{ form.Jury.label_tag }} {{ form.Jury }}
+                                {% if stage.Fiche_Eval.Jury != None %}
+                                <a href="{% url 'supprimerJury' stage.Fiche_Eval.Jury.pk %}">Supprimer Jury</a>
+                                {% endif %}
+                                <a href="{% url 'ajouterJury' %}">Ajouter Jury</a>
+                            </div>
+                            {% for field in form %}
+                            <div class="fieldWrapper">
+                            {% if field.name != "Jury" %}
+                            {{ field.label_tag }} {{ field }}
+                            {% endif %}
+                            </div>
+                            {% endfor %}
+
+                            <input type="submit" name="Ajout">
+                        </form>
+                        {% for message in messages %}
+                            <p id="messages">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

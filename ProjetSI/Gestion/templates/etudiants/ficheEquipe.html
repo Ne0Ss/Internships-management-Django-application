@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Ajouter une nouvelle équipe ?</p>
+<form action="" method="POST" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    <a href="{% url 'listeEtudiants' %}">Annuler</a>
+    <input type="submit" name="Ajout">
+</form>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load sass_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel = "icon" href = 
+  "https://iconape.com/wp-content/files/hv/373093/svg/373093.png" 
+          type = "image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESI: Gestion des stages</title>
+    <link href="{% sass_src 'accueil/css/accueil.scss' %}" rel="stylesheet" type="text/css" >
+</head>
+<body>
+  {% if user.is_authenticated %}
+    <h1>Bienvenue, {{request.user}}.</h1>
+    
+<input type="checkbox" id="burger-toggle">
+<label for="burger-toggle" class="burger-menu">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</label>
+<div >
+  <a class="nav-link" href="{% url 'logout' %}" >
+    <img style="max-width:2rem;position:absolute;right:3rem;top:3rem;" class="delete" src="{% static 'accueil/images/shutdown.png' %}" alt=""></a>
+  </div>
+<div class="menu">
+  <div class="menu-inner">
+    <ul class="menu-nav">
+      <li class="menu-nav-item"><a class="menu-nav-link" href="{% url 'accueil' %}"><span>
+            <div>Accueil</div>
+          </span></a></li>
+      <li class="menu-nav-item"><a class="menu-nav-link" href="{% url 'guide' %}"><span>
+            <div>Guide</div>
+          </span></a></li>
+      <li class="menu-nav-item"><a class="menu-nav-link" href="{% url 'nous' %}"><span>
+            <div>Équipe</div>
+          </span></a></li>
+      <li class="menu-nav-item"><a class="menu-nav-link" href="{% url 'register' %}"><span>
+            <div>Ajouter Compte</div>
+          </span></a></li>
+    </ul>
+    <div class="gallery">
+      <div class="title">
+        <p>Gestion des stages</p>
+      </div>
+      <div class="images">
+        {% now "Y" as annéeCourrante %}
+        <a class="image-link" href="{% url 'stat' année=annéeCourrante %}">
+          <div class="image" data-label="Statistiques"><img src="{% static 'accueil/images/Stat.jpg' %}" alt=""></div>
+        </a>
+        <a class="image-link" href="{% url 'listeEtudiants' %}">
+          <div class="image" data-label="Stagiaires"><img src="{% static 'accueil/images/Etudiants.jpg' %}" alt=""></div>
+        </a>
+        <a class="image-link" href="{% url 'listeEncadrants' %}">
+          <div class="image" data-label="Encadrants"><img src="{% static 'accueil/images/Encadrant.jpg' %}" alt=""></div>
+        </a>
+        <a class="image-link" href="{% url 'listeEntreprises' %}">
+          <div class="image" data-label="Entreprises"><img src="{% static 'accueil/images/Entreprise.png' %}" alt=""></div>
+        </a>
+        <a class="image-link" href="{% url 'listeStages' %}">
+          <div class="image" data-label="Stages"><img src="{% static 'accueil/images/Stage.png' %}" alt=""></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+  <p>Veuillez vous connecter <a href="/login"></a></p>
+{% endif %}
+</body>
+</html>

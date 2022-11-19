@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<a href="{% url 'creerPromoteur' entreprise.pk %}"> <button class="btn btn-primary"> Ajouter un employé promoteur </button></a>
+<h2> Promoteur de l'entreprise {{ entreprise.NomEnt }}:</h2>
+<table class='table'>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Profession</th>
+        <th>Actions</th>
+    </tr>
+    {% for promoteur in promoteurs %}
+        <tr>
+
+            <td>{{promoteur.NomP}}</td>
+            <td>{{promoteur.PrénomP}}</td>
+            <td>{{promoteur.Profession}}</td>
+            <td><a href="{% url 'detailPromoteur' promoteur.pk %}"> <button class="btn btn-primary"> Détails </button></a>
+            <a href="{% url 'modifierPromoteur' promoteur.pk %}"> <button class="btn btn-primary"> Modifier </button></a>
+            <a href="{% url 'supprimerPromoteur' promoteur.pk %}"> <button class="btn btn-secondary"> Supprimer </button></a></td>
+            
+            
+        </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

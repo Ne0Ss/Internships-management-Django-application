@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'etudiants/css/detail.css' %}" rel="stylesheet" type="text/css" >
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="fieldWrapper">
+                                {% for field in form %}
+                                {% if field.name == "Equipe" %}
+                                {{ field.label_tag }} {{ field }}
+                                <a href="/ajouterequipe">Ajouter équipe</a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% for field in form %}
+                            <div class="fieldWrapper">
+                            {% if field.name != "Equipe" %}
+                            {{ field.label_tag }} {{ field }}
+                            {% endif %}
+                            </div>
+                            {% endfor %}
+
+                            <input type="submit" name="Ajout">
+                        </form>
+                        {% for message in messages %}
+                            <p id="messages">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

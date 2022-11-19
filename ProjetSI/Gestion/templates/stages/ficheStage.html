@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Ajouter un stage: </p>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.Durée.label_tag }} {{ form.Durée }}  semaines 
+    {% for field in form %}
+    <div class="fieldWrapper">
+    {% if field.name != "Durée" %}
+    {{ field.label_tag }} {{ field }}
+    {% endif %}
+    </div>
+    {% endfor %}
+    <input type="submit" name="Ajout">
+</form>
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% endfor %}
+{% endblock %}

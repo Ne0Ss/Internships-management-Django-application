@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h3>Veuillez selectionner le fichier pdf du rapport du stage "{{stage}}":</h3>
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="Ajout">
+</form>
+{%if stage.Type.pk == 1 %}
+<p>Un rapport avec maximum 6 pages est recommandé pour ce type de stage.</p>
+{% endif %}
+{%if stage.Type.pk == 2 %}
+<p>Un rapport avec maximum 20 pages est recommandé pour ce type de stage.</p>
+{% endif %}
+{%if stage.Type.pk == 3 %}
+<p>Un rapport avec maximum 120 pages est recommandé pour ce type de stage.</p>
+{% endif %}
+{% endblock %}

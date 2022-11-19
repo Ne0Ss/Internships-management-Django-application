@@ -1,0 +1,47 @@
+{% load static %}
+<style>
+  .deconnecter{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'accueil' %}"><img src="{% static 'accueil/images/esi.png' %}" style="max-width: 5rem; margin-top: -20px;margin-bottom: -20px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'accueil' %}">Accueil </a>
+        </li>
+        <li class="nav-item">
+          {% now "Y" as annéeCourrante %}
+          <a class="nav-link" href="{% url 'stat' année=annéeCourrante %}">Statistiques</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listeEtudiants' %}">Stagiaires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listeEncadrants' %}">Encadrants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listeEntreprises' %}">Entreprises</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listeStages' %}">Stages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'guide' %}">Guide</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'nous' %}">à propos</a>
+        </li>
+      </ul>
+    </div>
+
+    <span class="deconnecter">Salut, {{request.user}}</span>
+    <span><a class="nav-link" href="{% url 'logout' %}" >Se déconnecter</a></span>
+  </nav>

@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  <h1>{{ sujet.IntituléS}} </h1>
+
+  <p><strong>Résumé:</strong> {{ sujet.Résumé }}</p>
+  <p><strong>Plan de travail:</strong> {{ sujet.Plan }}</p>
+  <p><strong>Date de création:</strong> {{ sujet.Date }}</p>
+  <p><strong>Proposé par l'entreprise:</strong> {{ sujet.NumEnt }}</p>
+
+  <a href="{% url 'listeSujets' sujet.NumEnt.pk %}">Retour</a>
+{% endblock %}

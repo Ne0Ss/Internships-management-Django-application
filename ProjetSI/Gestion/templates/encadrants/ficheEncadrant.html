@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Ajouter un encadrant: </p>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.NumJury.label_tag }} {{ form.NumJury }}
+    {% if encadrant.NumJury != None %}
+    <a href="{% url 'supprimerJury' encadrant.NumJury.pk %}">Supprimer Jury</a>
+    {% endif %}
+    <a href="{% url 'ajouterJury' %}">Ajouter Jury</a>
+    {% for field in form %}
+    <div class="fieldWrapper">
+    {% if field.name != "NumJury" %}
+    {{ field.label_tag }} {{ field }}
+    {% endif %}
+    </div>
+    {% endfor %}
+    <a href="{% url 'listeEncadrants' %}">Annuler</a>
+    <input type="submit" name="Ajout">
+</form>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'etudiants/css/cartes.css' %}" rel="stylesheet" type="text/css" >
+<div style="position:absolute;right:5rem;">
+<a href="{% url 'creerEtudiant' %}"> <button class="btn btn-primary"> Ajouter un nouvel étudiant </button></a>
+<a href="{% url 'rechercherEtudiant' %}"> <button class="btn btn-primary"> Chercher étudiant</button></a>
+</div>
+<br><br>
+{% for equipe in equipes %}
+<hr>
+<div class="card-deck" >
+    <h1 style="margin-left: 30px;padding-top: 2rem;"> Equipe {{ equipe.pk }}:</h1> <br>
+    {% for etudiant in etudiants %}
+    {% if equipe.pk == etudiant.Equipe.pk %}
+    <div class="card shadow" style="width: 18rem; max-width: 250px; max-height: 450px; margin-bottom: 20px; ">
+        <img src="{{etudiant.image.url}}" class="card-img-top" alt="" style="border-top-right-radius:0.5rem;border-top-left-radius:0.5rem;max-width: 250px; max-height: 250px; ">
+        <a class="image-link" href="{% url 'supprimerEtudiant' etudiant.get_Matricule_Numbers %}">
+            <img class="delete" src="{% static 'etudiants/images/delete.png' %}" alt="">
+        </a>
+        <div class="card-body" >
+          <h5 class="card-title">{{etudiant.NomE}} {{etudiant.PrénomE}}</h5>
+          <p class="card-text">{{etudiant.Matricule}} </p> 
+          <p class="card-text">équipe {{ equipe.pk }}</p>
+          <a href="{% url 'detailEtudiant' etudiant.get_Matricule_Numbers %}" class="btn btn-primary">Détails</a>
+          <a href="{% url 'modifierEtudiant' etudiant.get_Matricule_Numbers %}" class="btn btn-secondary">Modifier</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% if equipe.pk not in equipesNonVide %}
+    <a href="{% url 'modifierEquipe' equipe.pk %}"> <button class="btn btn-primary"> Assigner à un stage </button></a>
+    {% endif %}
+    {% if equipe.pk in equipesNonVide %}
+    <div class="card shadow" style="border-radius: 2rem;width: 18rem; max-width: 350px; max-height: 550px; margin-bottom: 20px; ">
+        <div class="card-body">
+          <h5 class="card-title"> Pas d'étudiants </h5>
+          <p class="card-text">Vous pouvez supprimer cette equipe. </p> 
+          <p class="card-text">équipe {{ equipe.pk }} vide </p>
+          <a href="{% url 'supprimerEquipe' equipe.pk %}" class="btn btn-secondary">Supprimer</a>
+        </div>
+    </div>
+    <!-- <a class="image-link" href="{% url 'supprimerEquipe' equipe.pk %}">
+        <img class="delete" src="{% static 'etudiants/images/delete.png' %}" alt="">
+    </a> -->
+    {% endif %}
+</div>
+{% endfor %}
+
+    <!-- <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+        </tr>
+        {% for etudiant in etudiants %}
+            <tr>
+
+                <td>{{etudiant.NomE}}</td>
+                <td>{{etudiant.PrénomE}}</td>
+                <td>{{etudiant.Matricule}}</td>
+                <td><img class=images src="{{etudiant.image.url}}"></td>
+                <td><a href="{% url 'detailEtudiant' etudiant.get_Matricule_Numbers %}"> <button> Détails </button></a></td>
+                <td><a href="{% url 'modifierEtudiant' etudiant.get_Matricule_Numbers %}"> <button> Modifier </button></a></td>
+                <td><a href="{% url 'supprimerEtudiant' etudiant.get_Matricule_Numbers %}"> <button> Supprimer </button></a></td>
+                
+                
+            </tr>
+        {% endfor %}
+    
+    </table> -->
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<a href="{% url 'creerStage' %}"> <button class="btn btn-primary"> Ajouter un stage </button></a>
+
+<h1 style="margin-left: 30px;padding-top: 2rem;"> Stages:</h1> <br>
+
+<table class="table">
+    <tr>
+        <th>Type</th>
+        <th>Entreprise</th>
+        <th>Date</th>
+        <th>Actions</th>
+        <th>Plus</th>
+    </tr>
+    {% for stage in stages %}
+        <tr>
+
+            <td>{{stage.Type}}</td>
+            <td>{{stage.NumEnt}}</td>
+            <td>{{stage.DateDeb}}</td>
+            <td><a href="{% url 'detailStage' stage.pk %}"> <button class="btn btn-primary"> Détails </button></a>
+            <a href="{% url 'modifierStage' stage.pk %}"> <button class="btn btn-primary"> Modifier </button></a>
+            <a href="{% url 'supprimerStage' stage.pk %}"> <button class="btn btn-secondary"> Supprimer </button></a></td>
+            <td>
+            {% if stage.Type.pk == 3 and stage.Sujet_pfe == None %}
+            <a href="{% url 'selectionnerSujet' stage.pk %}"> <button class="btn btn-secondary"> Choisir sujet </button></a>
+            {% endif %}
+            {% if stage.Rapport == "" %}
+            <a href="{% url 'entrerRapport' stage.pk %}"> <button class="btn btn-secondary"> Entrer rapport </button></a>
+            {% else %}
+            <a href="{% static stage.Rapport %}"> <button class="btn btn-primary"> Ouvrir rapport</button></a>
+            {% endif %}
+            {% if stage.Fiche_Eval == None %}
+            <a href="{% url 'ajouterEvaluation' stage.pk %}"> <button class="btn btn-secondary"> Entrer Fiche d'évaluation </button></a>
+            {% endif %}
+
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock %}

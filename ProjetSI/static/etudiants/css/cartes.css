@@ -1,0 +1,30 @@
+
+.shadow {
+  align-items: center;
+  background: #b9b9c4;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  color: #2a1f62;
+  display: flex;
+  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+}
+
+.shadow:hover {
+  background: #ffffff;
+  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+}
+
+
+        

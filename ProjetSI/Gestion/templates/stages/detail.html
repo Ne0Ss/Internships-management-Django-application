@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  <h1>{{stage.Type}} chez {{stage.NumEnt}}: </h1>
+
+  <p><strong>Date de début:</strong> {{ stage.DateDeb }}</p>
+  <p><strong>Durée du stage:</strong> {{ stage.Durée }} semaines</p>
+  <p><strong>Fiche d'évaluation:</strong> {{ stage.Fiche_Eval.NoteFinale }} {% if stage.Fiche_Eval != None %} <a href="{% url 'modifierEvaluation' stage.Fiche_Eval.pk %}">Modifier</a>{% else %} Pas de fiche, <a href="{% url 'ajouterEvaluation' stage.pk %}"> Entrer Fiche d'évaluation</a> {% endif %}</p> 
+  {% if stage.Type.pk == 3 %}
+  <p><strong>Sujet PFE:</strong> {{ stage.Sujet_pfe }}</p>
+  {% endif %}
+  <p><strong>Rapport de stage :</strong> {{ stage.Rapport }}</p>
+  <p><strong>Etudiants :</strong>{% for e in etudiants %} <a href="{% url 'detailEtudiant' e.get_Matricule_Numbers %}">{{e}}</a> {% empty %} pas d'étudiants assignés à ce stage pour l'instant. {% endfor %}</p> 
+  <a href="{% url 'listeStages' %}">Retour</a>
+{% endblock %}

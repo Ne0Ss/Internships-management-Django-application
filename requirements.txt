@@ -1,0 +1,2 @@
+pip install libsass django-compressor django-sass-processor
+pip install PyPDF2

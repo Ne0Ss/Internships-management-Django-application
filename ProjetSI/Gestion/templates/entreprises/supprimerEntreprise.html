@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<p>Etes vous sur de vouloir supprimer l'entreprise "{{entreprise}}" ?</p>
+<form action="{% url 'supprimerEntreprise' entreprise.pk %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'listeEntreprises' %}">Annuler</a>
+    <input type="submit" name="Confimer">
+</form>
+{% endblock %}
